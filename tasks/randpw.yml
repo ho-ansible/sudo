@@ -3,6 +3,7 @@
 - name: sudo | lock root account
   user:
     name: root
+    password: "!"
 
 - name: sudo | random user password
   tags:
