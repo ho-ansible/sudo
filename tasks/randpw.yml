@@ -10,4 +10,4 @@
     - password
   user:
     name: "{{ sudo_user }}"
-    password: "{{ lookup('password', pw_store + '/' + inventory_hostname) | password_hash('sha512') }}"
+    password: "{{ lookup('password', pw_store + '/' + inventory_hostname + ' encrypt=sha512_crypt') }}"
