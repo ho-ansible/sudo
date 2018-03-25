@@ -24,14 +24,16 @@
     dest: /etc/sudoers
     regexp: '^%sudo'
     line: "%sudo   ALL=(ALL:ALL) NOPASSWD: ALL"
+    validate: "/usr/sbin/visudo -cf %s"
 
-- name: sudo | keep env vars in sudo
+- name: sudo | preserve ssh agent
   tags:
   - config
   lineinfile:
     dest: /etc/sudoers
     regexp: 'env_keep'
     line: 'Defaults     env_keep+="SSH_AUTH_SOCK"'
+    validate: "/usr/sbin/visudo -cf %s"
 
 - name: sudo | user
   tags:
