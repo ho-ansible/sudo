@@ -17,13 +17,21 @@
   - sudo
   - adm
 
-- name: sudo | /etc/sudoers
+- name: sudo | enable passwordless sudo
   tags:
   - config
   lineinfile:
     dest: /etc/sudoers
     regexp: '^%sudo'
     line: "%sudo   ALL=(ALL:ALL) NOPASSWD: ALL"
+
+- name: sudo | keep env vars in sudo
+  tags:
+  - config
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: 'env_keep'
+    line: 'Defaults     env_keep+="SSH_AUTH_SOCK"'
 
 - name: sudo | user
   tags:
