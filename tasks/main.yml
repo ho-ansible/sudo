@@ -4,9 +4,7 @@
   tags:
   - package
   package:
-    name: "{{ item }}"
-  with_items:
-  - sudo
+    name: sudo
 
 - name: sudo | group
   tags:
