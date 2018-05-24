@@ -11,9 +11,9 @@
   - group
   group:
     name: "{{ item }}"
-  with_items:
-  - sudo
-  - adm
+  loop:
+    - sudo
+    - adm
 
 - name: sudo | enable passwordless sudo
   tags:
