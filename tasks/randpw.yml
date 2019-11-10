@@ -5,9 +5,22 @@
     name: root
     password: "!"
 
-- name: sudo | random user password
+- name: sudo | check pre-generated password
+  local_action:
+    module: stat
+    path: "{{ tinc_keydir }}"
+  register: keydir
+
+- name: sudo | generate random user password
+  tags:
+  - password
+  set_fact:
+    sudo_pw: "{{  }}"
+  when: not pwfile.stat.exists
+
+- name: sudo | set user password
   tags:
     - password
   user:
     name: "{{ sudo_user }}"
-    password: "{{ lookup('password', pw_store + '/' + inventory_hostname + ' encrypt=sha512_crypt') }}"
+    password: "{{ password_hash('sha512', 65534 | random(seed=inventory_hostname) | string) }}
