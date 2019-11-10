@@ -1,10 +1,5 @@
 ---
 
-- name: sudo | lock root account
-  user:
-    name: root
-    password: "!"
-
 - name: sudo | check pre-generated password
   local_action:
     module: stat
@@ -17,10 +12,3 @@
   set_fact:
     sudo_pw: "{{  }}"
   when: not pwfile.stat.exists
-
-- name: sudo | set user password
-  tags:
-    - password
-  user:
-    name: "{{ sudo_user }}"
-    password: "{{ password_hash('sha512', 65534 | random(seed=inventory_hostname) | string) }}
