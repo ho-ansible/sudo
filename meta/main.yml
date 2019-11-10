@@ -1,6 +1,6 @@
 galaxy_info:
   author: Sean Ho
-  description: Sudo user 
+  description: Superuser access
   company: Anchorlytics Consulting
   license: MIT
 
@@ -15,5 +15,6 @@ galaxy_info:
   galaxy_tags:
     - sudo
     - user
+    - access
 
 dependencies: []
