@@ -1,4 +1,4 @@
 ---
 sudo_user: "{{ ansible_user }}"
 ssh_authorized_keys: ""
-pw_store: "{{ inventory_dir }}/.pw"
+pw_store: "{{ inventory_dir }}/host_vars"
