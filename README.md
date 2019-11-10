@@ -1,21 +1,16 @@
 # Ansible role: sudo
-Disable/lock root password,
-create regular user with passwordless sudo privileges, 
-copy ssh keys in for login to that user, and
-set a random password, saved in ansible inventory host var.
+Allow regular user to use sudo without password.
+User should exist already and be secured
+(e.g., with disabled password and only SSH pubkey login)
 
 ## Requirements
 Only tested on Debian stable, for now.
 
 ## Role Variables
 + `sudo_user` (default: `{{ ansible_user }}`): username of regular user with sudo privileges
-+ `ssh_authorized_keys` (default: none): list of ssh pubkeys allowed to login
-+ `pw_store` (default: `{{ inventory_dir }}/host_vars`):
-  hashed passwords will be stored in subdirectories under this path,
-  `{{ inventory_hostname }}/pw.yml`, in a key named `sudo_pw`
 
 ## Dependencies
-None.
+None
 
 ## Example Playbook
 

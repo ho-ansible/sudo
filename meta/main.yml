@@ -1,6 +1,6 @@
 galaxy_info:
   author: Sean Ho
-  description: Sudo user and login
+  description: Sudo user 
   company: Anchorlytics Consulting
   license: MIT
 
@@ -14,9 +14,6 @@ galaxy_info:
 
   galaxy_tags:
     - sudo
-    - ssh
     - user
-    - password
-    - login
 
 dependencies: []

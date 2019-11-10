@@ -6,15 +6,6 @@
   package:
     name: sudo
 
-- name: sudo | group
-  tags:
-  - group
-  group:
-    name: "{{ item }}"
-  loop:
-    - sudo
-    - adm
-
 - name: sudo | enable passwordless sudo
   tags:
   - config
@@ -33,20 +24,10 @@
     line: 'Defaults     env_keep+="SSH_AUTH_SOCK"'
     validate: "/usr/sbin/visudo -cf %s"
 
-- name: sudo | user
+- name: sudo | add user to group
   tags:
   - user
   user:
     name: "{{ sudo_user }}"
-    groups: "sudo,adm"
-    shell: /bin/bash
-
-- name: sudo | SSH keys
-  tags:
-  - ssh
-  authorized_key:
-    user: "{{ sudo_user }}"
-    key: "{{ ssh_authorized_keys }}"
-    exclusive: yes
-
-- import_tasks: randpw.yml
+    groups: "sudo"
+    append: yes
