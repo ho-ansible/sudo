@@ -1,7 +1,9 @@
 # Ansible role: sudo
 Allow regular user to use sudo without password.
 User should exist already and be secured
-(e.g., with disabled password and only SSH pubkey login)
+(e.g., with disabled password and only SSH pubkey login).
+
+Password login to `root` is disabled.
 
 ## Requirements
 Only tested on Debian stable, for now.

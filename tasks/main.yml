@@ -31,3 +31,9 @@
     name: "{{ sudo_user }}"
     groups: "sudo"
     append: yes
+
+- name: sudo | lock root account
+  user:
+    name: root
+    password: "!"
+
